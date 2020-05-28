@@ -26,9 +26,33 @@ Laravel Cashier provides an expressive, fluent interface to [Braintree's](https:
     ]
 
     composer require  nabinem/cashier-braintree:dev-master
-
-## Test Setup
-You will need to set the following details locally and on your Braintree account in order to test. It's recommended that you sign-up for a [Braintree sandbox account](https://www.braintreepayments.com/sandbox).
+    
+## Uses
+  On config/services.php file add: <br>
+  
+         'braintree' => [
+          'model'  => App\User::class,
+          'environment' => env('BRAINTREE_ENV'),
+          'merchant_id' => env('BRAINTREE_MERCHANT_ID'),
+          'public_key' => env('BRAINTREE_PUBLIC_KEY'),
+          'private_key' => env('BRAINTREE_PRIVATE_KEY'),
+      ],
+      
+  On boot method of AppServiceProvider.php add<br>
+  
+       use Braintree\Configuration as Braintree_Configuration;
+       
+        Braintree_Configuration::environment(config('services.braintree.environment'));
+        Braintree_Configuration::merchantId(config('services.braintree.merchant_id'));
+        Braintree_Configuration::publicKey(config('services.braintree.public_key'));
+        Braintree_Configuration::privateKey(config('services.braintree.private_key'));
+    
+   ### Generating token
+     use Braintree\ClientToken as Braintree_ClientToken;
+     
+     $clientToken = Braintree_ClientToken::generate();
+  
+  ### 
 
 ### Local
 #### .env
