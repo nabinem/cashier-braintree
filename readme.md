@@ -37,7 +37,7 @@ Laravel Cashier provides an expressive, fluent interface to [Braintree's](https:
           'public_key' => env('BRAINTREE_PUBLIC_KEY'),
           'private_key' => env('BRAINTREE_PRIVATE_KEY'),
       ],
-      
+  
   On boot method of AppServiceProvider.php add<br>
   
        use Braintree\Configuration as Braintree_Configuration;
@@ -52,7 +52,17 @@ Laravel Cashier provides an expressive, fluent interface to [Braintree's](https:
      
      $clientToken = Braintree_ClientToken::generate();
   
-  ### 
+  ### NOTE
+  It seems Class alias has been removed in this new braintree SDK so if you have older code using
+  namespace with name starting Braintree_... then change it to alias version yourself.
+         
+            For eg;
+            change 'use Braintree_Subscription' to 'Braintree\Subscription as Braintree_Subscription'
+            'use Braintree\ClientToken' => 'use Braintree\ClientToken as Braintree_ClientToken'
+            use Braintree\Plan as Braintree_Plan;
+            use Braintree\AddOn as Braintree_AddOn;
+            
+            
 
 ### Local
 #### .env
