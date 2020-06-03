@@ -54,7 +54,7 @@ Laravel Cashier provides an expressive, fluent interface to [Braintree's](https:
   
   ### NOTE
   It seems Class alias has been removed in this new braintree SDK so if you have older code using
-  namespace with name starting Braintree_... then change it to alias version yourself.
+  namespace with name starting Braintree_... then change it to alias version.
          
             For eg;
             change 'use Braintree_Subscription' to 'Braintree\Subscription as Braintree_Subscription'
