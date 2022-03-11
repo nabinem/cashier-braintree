@@ -25,7 +25,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "braintree_6-dev"
+            "dev-braintree_6": "3.0-dev"
         },
         "laravel": {
             "providers": [
