@@ -11,8 +11,8 @@
 Laravel Cashier provides an expressive, fluent interface to [Braintree's](https://www.braintreepayments.com/) subscription billing services. It handles almost all of the boilerplate subscription billing code you are dreading writing. In addition to basic subscription management, Cashier can handle coupons, swapping subscription, cancellation grace periods, and even generate invoice PDFs.
 
 ## Support
-   Laravel ^7.0, PHP ^7.2 <br>
-   uses braintree/braintree_php: "~5.0" <br>
+   Laravel ^7.0|^8.0, PHP ^7.2|^8.0 <br>
+   uses braintree/braintree_php: "~6.0" <br>
    Original source code: https://github.com/laravel/cashier-braintree 
    
 ## Installation
@@ -25,7 +25,7 @@ Laravel Cashier provides an expressive, fluent interface to [Braintree's](https:
         }
     ]
 
-    composer require  nabinem/cashier-braintree:dev-master
+    composer require nabinem/cashier-braintree:dev-braintree_6
     
 ## Uses
   On config/services.php file add: <br>
