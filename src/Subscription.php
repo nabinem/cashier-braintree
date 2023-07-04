@@ -324,6 +324,29 @@ class Subscription extends Model
         
         return true;
     }
+
+    /**
+     * check braintre docs for params
+     *
+     * @param [integer] $id
+     * @param [type] $params: [quantity, amount]
+     * @return void
+     */
+    public function updateAddOn($id, $params){
+        $result = BraintreeSubscription::update($this->braintree_id, [
+            'addOns' => [
+                'update' => [
+                    ['existingId' => $id] + $params
+                ]
+            ]
+        ]);
+        
+        if (!$result->success){
+            throw new \Exception($result->message);
+        }
+        
+        return $result;
+    }
     
     public function removeAddOn($id){
         $result = BraintreeSubscription::update($this->braintree_id, [
