@@ -291,13 +291,19 @@ class Subscription extends Model
         ]);
     }
     
-    public function addAddOn($id, $quantity = 1){
+    public function addAddOn($id, $quantity = 1, $price = null){
+        $params = [
+            'inheritedFromId' => $id,
+            'quantity' => $quantity
+        ];
+
+        if (!empty($price)){
+            $params['amount'] = $price;
+        }
+
         $result = BraintreeSubscription::update($this->braintree_id, [
                 'addOns' => [
-                    'add' => [[
-                        'inheritedFromId' => $id,
-                        'quantity' => $quantity
-                    ]]
+                    'add' => [$params]
                 ]
             ]);
         
@@ -308,13 +314,18 @@ class Subscription extends Model
         return true;
     }
     
-    public function updateAddOnQuantity($id, $qty){
+    public function updateAddOnQuantity($id, $qty, $price = null){
+        $params = [
+            'existingId' => $id,
+            'quantity' => $qty
+        ];
+        if (!empty($price)){
+            $params['amount'] = $price;
+        }
+
         $result = BraintreeSubscription::update($this->braintree_id, [
             'addOns' => [
-                'update' => [[
-                    'existingId' => $id,
-                    'quantity' => $qty
-                ]]
+                'update' => [$params]
             ]
         ]);
         
